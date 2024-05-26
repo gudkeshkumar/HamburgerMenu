@@ -12,12 +12,16 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+            ZStack {
+                VStack {
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                    Text("Hello, world!")
+                }
+                MenuView(isShowing: $showMenu)
             }
+            .toolbar(showMenu ? .hidden : .visible, for: .navigationBar)
             .navigationTitle("MyHome")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
@@ -29,7 +33,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .padding()
         }
         
     }
